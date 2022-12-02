@@ -9,7 +9,8 @@ gem "rails", "~> 7.0.4"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-gem "pg"
+gem 'sqlite3', group: :development
+gem 'pg', group: :production
 
 gem 'rack-cors'
 
