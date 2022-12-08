@@ -1,11 +1,12 @@
 class GiftsController < ApplicationController
+    skip_before_action :authenticate_user, only: [:index, :show]
     def index
         render json: Gift.all
     end
 
     def show
         gift = Gift.find_by(id: params[:id])
-        render json: gift, status: ok
+        render json: gift, include: "recipients"
     end
 
     def create
@@ -28,6 +29,6 @@ class GiftsController < ApplicationController
     private 
 
     def gift_params
-        params.permit(:id, :name, :relationship, :priority, :user_id)
+        params.permit(:id, :name, :description, :photo_url, :bought, :made, :priority, :wrapped, :price, :user_id)
     end
 end

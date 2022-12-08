@@ -1,4 +1,5 @@
 class RecipientsController < ApplicationController
+    skip_before_action :authenticate_user, only: [:create, :show]
 
     def index
         render json: Recipient.all
@@ -6,7 +7,7 @@ class RecipientsController < ApplicationController
 
     def show
         recipient = Recipient.find_by(id: params[:id])
-        render json: recipient, status: ok
+        render json: recipient, include: :gifts
     end
 
     def create
@@ -29,6 +30,6 @@ class RecipientsController < ApplicationController
     private 
 
     def recipient_params
-        params.permit(:id, :name, :description, :photo_url, :bought, :made, :priority, :wrapped, :price, recipient_id, :user_id)
+        params.permit(:id, :name, :relationship, :priority, :user_id)
     end
 end

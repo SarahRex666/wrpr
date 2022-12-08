@@ -11,8 +11,10 @@ gem "sprockets-rails"
 
 gem 'sqlite3'
 gem 'pg'
-
+gem 'active_model_serializers'
 gem 'rack-cors'
+gem 'rails_same_site_cookie'
+
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
