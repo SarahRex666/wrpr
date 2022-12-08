@@ -1,5 +1,5 @@
 class RecipientsController < ApplicationController
-    skip_before_action :authenticate_user, only: [:create, :show]
+    skip_before_action :authenticate_user
 
     def index
         render json: Recipient.all

@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-    skip_before_action :authenticate_user, only: [:index, :show]
+    skip_before_action :authenticate_user
     def index
         render json: Gift.all
     end
@@ -29,6 +29,6 @@ class GiftsController < ApplicationController
     private 
 
     def gift_params
-        params.permit(:id, :name, :description, :photo_url, :bought, :made, :priority, :wrapped, :price, :user_id)
+        params.permit(:id, :name, :description, :photo_url, :bought, :made, :priority, :wrapped, :price, :user_id, :recipient_id)
     end
 end
