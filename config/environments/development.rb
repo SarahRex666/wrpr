@@ -17,7 +17,7 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
-  config.action_dispatch.cookies_same_site_protection = :None
+  # config.action_dispatch.cookies_same_site_protection = :None
 
 
   # Enable/disable caching. By default caching is disabled.

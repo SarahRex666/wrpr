@@ -12,7 +12,8 @@ class RecipientsController < ApplicationController
 
     def create
         recipient = Recipient.create(recipient_params)
-        render json: recipient, status: :created
+        recipients = recipient.user
+        render json: recipients, status: :created
     end
 
     def update
@@ -23,8 +24,9 @@ class RecipientsController < ApplicationController
 
     def destroy
         recipient = Recipient.find_by(id: params[:id])
+        recipients = recipient.user
         recipient.destroy
-        render json: ""
+        render json: recipients
     end
 
     private 

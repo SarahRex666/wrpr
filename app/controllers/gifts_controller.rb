@@ -11,7 +11,8 @@ class GiftsController < ApplicationController
 
     def create
         gift = Gift.create(gift_params)
-        render json: gift, status: :created
+        gifts = gift.user
+        render json: gifts, status: :created
     end
 
     def update
@@ -22,8 +23,9 @@ class GiftsController < ApplicationController
 
     def destroy
         gift = Gift.find_by(id: params[:id])
+        gifts = gift.user
         gift.destroy
-        render json: ""
+        render json: gifts
     end
 
     private 
